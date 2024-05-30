@@ -17,11 +17,14 @@ public abstract class EnemyBase : MonoBehaviour
     protected PlayerHealth playerHealth;
     protected bool isDead = false;
 
+    private WaveManager waveManager;
+
     public virtual void Start()
     {
         enemyCurHp = enemyMaxHp;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
+        waveManager = FindObjectOfType<WaveManager>();
         enemyAttackCooldownTimer = 0f;
     }
 
@@ -55,9 +58,7 @@ public abstract class EnemyBase : MonoBehaviour
         enemyCurHp -= damage;
 
         if (enemyCurHp <= 0 && !isDead)
-        {
             Die();
-        }
     }
 
     protected virtual void Attack() { }
@@ -72,7 +73,8 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Debug.Log("Enemy died");
         isDead = true;
-        //animacja zgonu
+        waveManager.OnEnemyKilled();
+        // Add death animation logic here
     }
 
     public int GetEnemyAttackAmount() => enemyAttack;

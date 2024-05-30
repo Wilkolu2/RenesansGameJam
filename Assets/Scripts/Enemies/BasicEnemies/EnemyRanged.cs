@@ -20,10 +20,7 @@ public class EnemyRanged : EnemyBase
     {
         GameObject projectilePrefab = useArcProjectile ? arcProjectilePrefab : straightProjectilePrefab;
         if (projectilePrefab == null)
-        {
-            Debug.LogError("Projectile prefab is not assigned.");
             return;
-        }
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         EnemyProjectile enemyProjectile = projectile.GetComponent<EnemyProjectile>();

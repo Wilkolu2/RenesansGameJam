@@ -7,14 +7,17 @@ public class WeaponBlunderbuss : WeaponBase
 
     public override void Attack(Vector3 targetPosition)
     {
-        if (!CanAttack()) return;
+        if (!CanAttack())
+            return;
+
+        Debug.Log("Blunderbuss attack");
 
         playerAttackCooldownTimer = playerAttackCooldown;
 
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         PlayerProjectile projScript = projectile.GetComponent<PlayerProjectile>();
-        projScript.Initialize(targetPosition, playerAttackPower, playerAttackSpeed);
+        projScript.Initialize(targetPosition, playerAttackPower);
 
-        // animacja
+        // Animation
     }
 }

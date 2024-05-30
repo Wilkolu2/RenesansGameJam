@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerHpCur = playerHpMax;
-
         AttachWeaponModel();
     }
 
@@ -25,8 +24,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
             Attack();
 
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //SwitchWeapon();
+        if (Input.GetKeyDown(KeyCode.E))
+            SwitchWeapon();
     }
 
     public void AttachWeaponModel()
@@ -42,8 +41,11 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        Vector3 targetPosition = GetAttackTargetPosition();
-        playerWeaponCur.Attack(targetPosition);
+        if (playerWeaponCur.CanAttack())
+        {
+            Vector3 targetPosition = GetAttackTargetPosition();
+            playerWeaponCur.Attack(targetPosition);
+        }
     }
 
     private Vector3 GetAttackTargetPosition()
@@ -53,7 +55,16 @@ public class Player : MonoBehaviour
 
     public void SwitchWeapon()
     {
+        if (playerWeaponCur is WeaponHammer)
+        {
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/WeaponBlunderbuss"));
+        }
+        else
+        {
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/WeaponHammer"));
+        }
 
+        AttachWeaponModel();
     }
 
     public void SetPlayerCurHp(int hp) => playerHpCur = hp;

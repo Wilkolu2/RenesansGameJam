@@ -10,7 +10,7 @@ public class WeaponHammer : WeaponBase
         if (!CanAttack())
             return;
 
-        Debug.Log("attack");
+        Debug.Log("Hammer attack");
 
         playerAttackCooldownTimer = playerAttackCooldown;
 
@@ -21,6 +21,6 @@ public class WeaponHammer : WeaponBase
                 enemy.TakeDamage(playerAttackPower);
         }
 
-        // animacje i dzwiek
+        // Animation and sound
     }
 }

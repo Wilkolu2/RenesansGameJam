@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
+    [SerializeField] private float speed;
+
     private Vector3 targetPosition;
     private int attackPower;
-    private float speed;
 
-    public void Initialize(Vector3 targetPosition, int attackPower, float speed)
+    public void Initialize(Vector3 targetPosition, int attackPower)
     {
         this.targetPosition = targetPosition;
         this.attackPower = attackPower;
-        this.speed = speed;
     }
 
     private void Update()

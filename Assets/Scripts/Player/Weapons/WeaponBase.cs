@@ -11,7 +11,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected float playerAttackCooldown;
     [SerializeField] public GameObject weaponModelPrefab;
 
-    [SerializeField] protected float playerAttackCooldownTimer;
+    protected float playerAttackCooldownTimer;
 
     public abstract void Attack(Vector3 targetPosition);
 
@@ -31,12 +31,8 @@ public abstract class WeaponBase : MonoBehaviour
             playerAttackCooldownTimer -= Time.deltaTime;
     }
 
-    protected bool CanAttack()
+    public bool CanAttack()
     {
-        bool canAttack = false;
-        if (playerAttackCooldownTimer <= 0f)
-            canAttack = true;
-
-        return canAttack;
+        return playerAttackCooldownTimer <= 0f;
     }
 }

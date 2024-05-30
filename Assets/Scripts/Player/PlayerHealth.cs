@@ -3,10 +3,13 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private Player player;
+    private WaveManager waveManager;
 
     private void Start()
     {
         player = GetComponent<Player>();
+        waveManager = FindObjectOfType<WaveManager>();
+
         if (player != null)
             player.SetPlayerCurHp(player.GetPlayerMaxHp());
         else
@@ -28,5 +31,6 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
+        waveManager.OnPlayerDeath();
     }
 }
