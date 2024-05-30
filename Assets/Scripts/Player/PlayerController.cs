@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldown;
 
+    [Header("Weapon Hold Point")]
+    [SerializeField] public Transform weaponHoldPoint;
+
     private bool isDashing;
     private float dashTimer;
     private float dashCooldownTimer;
@@ -45,6 +48,8 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         dashTimer = 0;
         dashCooldownTimer = 0;
+
+
     }
 
     private void Update()

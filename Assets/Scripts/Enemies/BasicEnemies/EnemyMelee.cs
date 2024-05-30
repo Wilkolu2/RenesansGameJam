@@ -4,20 +4,22 @@ public class EnemyMelee : EnemyBase
 {
     protected override void Attack()
     {
-        if (attackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
+        if (enemyAttackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
         {
             Debug.Log("Melee attack");
 
-            attackCooldownTimer = attackCooldown;
+            if (playerHealth != null)
+                playerHealth.TakeDamage(enemyAttack);
+
+            enemyAttackCooldownTimer = enemyAttackCooldown;
         }
     }
 
-    private void Update()
+    private new void Update()
     {
         base.Update();
+
         if (Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
-        {
             Attack();
-        }
     }
 }

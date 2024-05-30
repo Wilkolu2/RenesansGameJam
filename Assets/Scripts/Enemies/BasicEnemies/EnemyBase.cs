@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
+public abstract class EnemyBase : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] protected int enemyAttack;
     [SerializeField] protected float enemyMoveSpeed;
     [SerializeField] protected float enemyAttackRange;
-    [SerializeField] protected float attackCooldown;
-    [SerializeField] protected EnemyType enemyType;
+    [SerializeField] protected float enemyAttackCooldown;
+    [SerializeField] protected int enemyMaxHp = 1;
 
+    protected int enemyCurHp;
+    protected float enemyAttackCooldownTimer;
     protected Transform player;
-    protected float attackCooldownTimer;
+    protected PlayerHealth playerHealth;
+    protected bool isDead = false;
 
-    protected enum EnemyType
+    public virtual void Start()
     {
-        Melee,
-        Ranged
-    }
-
-    private void Start()
-    {
+        enemyCurHp = enemyMaxHp;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        attackCooldownTimer = 0f;
+        playerHealth = player.GetComponent<PlayerHealth>();
+        enemyAttackCooldownTimer = 0f;
     }
 
     protected void Update()
     {
+        if (isDead) return;
+
         FacePlayer();
         MoveTowardsPlayer();
         HandleAttackCooldown();
@@ -47,13 +50,30 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        enemyCurHp -= damage;
+
+        if (enemyCurHp <= 0 && !isDead)
+        {
+            Die();
+        }
+    }
+
     protected virtual void Attack() { }
 
     private void HandleAttackCooldown()
     {
-        if (attackCooldownTimer > 0)
-        {
-            attackCooldownTimer -= Time.deltaTime;
-        }
+        if (enemyAttackCooldownTimer > 0f)
+            enemyAttackCooldownTimer -= Time.deltaTime;
     }
+
+    private void Die()
+    {
+        Debug.Log("Enemy died");
+        isDead = true;
+        //animacja zgonu
+    }
+
+    public int GetEnemyAttackAmount() => enemyAttack;
 }
