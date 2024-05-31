@@ -6,7 +6,6 @@ public class EnemyMelee : EnemyBase
     {
         if (enemyAttackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
         {
-            Debug.Log("Melee attack");
 
             if (playerHealth != null)
                 playerHealth.TakeDamage(enemyAttack);

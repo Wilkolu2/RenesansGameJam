@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &93970268218296699
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9001734521598910502}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9001734521598910502
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93970268218296699}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0005}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1316396254026527817}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7821072145667638785
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7821072145667638785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 500, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82,11 +51,10 @@ MonoBehaviour:
   playerAttackSpeed: 5
   playerAttackRange: 15
   playerAttackCooldown: 5
+  firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 7821072145667638785}
-  playerAttackCooldownTimer: 5
   projectilePrefab: {fileID: 3088181961578906182, guid: fe903b7f20f279541b123280440519cc,
     type: 3}
-  firePoint: {fileID: 9001734521598910502}
 --- !u!54 &5534169753322469904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,11 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 183809cdd068a3f41957941164b86954,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9001734521598910502}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 183809cdd068a3f41957941164b86954, type: 3}
 --- !u!4 &1316396254026527817 stripped

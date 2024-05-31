@@ -9,6 +9,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] protected float playerAttackSpeed;
     [SerializeField] protected float playerAttackRange;
     [SerializeField] protected float playerAttackCooldown;
+    [SerializeField] protected Transform firePoint;
     [SerializeField] public GameObject weaponModelPrefab;
 
     protected float playerAttackCooldownTimer;
@@ -23,6 +24,11 @@ public abstract class WeaponBase : MonoBehaviour
     protected void Update()
     {
         HandleAttackCooldown();
+    }
+
+    public void SetFirePoint(Transform point)
+    {
+        firePoint = point;
     }
 
     protected void HandleAttackCooldown()

@@ -7,9 +7,11 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private int playerHpMax;
     [SerializeField] private WeaponBase playerWeaponCur;
+    [SerializeField] private Transform firePoint;
 
     private int playerHpCur;
     private Vector3 playerPos;
+    private GameObject currentWeaponModel;
 
     private void Start()
     {
@@ -30,18 +32,22 @@ public class Player : MonoBehaviour
 
     public void AttachWeaponModel()
     {
-        if (playerWeaponCur == null) return;
+        if (playerWeaponCur == null)
+            return;
+
+        if (currentWeaponModel != null)
+            Destroy(currentWeaponModel);
 
         Transform weaponHoldPoint = PlayerController.instance.weaponHoldPoint;
-
-        GameObject weaponModel = Instantiate(playerWeaponCur.weaponModelPrefab, weaponHoldPoint);
-        weaponModel.transform.localPosition = Vector3.zero;
-        weaponModel.transform.localRotation = Quaternion.identity;
+        playerWeaponCur.SetFirePoint(firePoint);
+        currentWeaponModel = Instantiate(playerWeaponCur.weaponModelPrefab, weaponHoldPoint);
+        currentWeaponModel.transform.localPosition = Vector3.zero;
+        currentWeaponModel.transform.localRotation = Quaternion.identity;
     }
 
     public void Attack()
     {
-        if (playerWeaponCur.CanAttack())
+        if (playerWeaponCur != null && playerWeaponCur.CanAttack())
         {
             Vector3 targetPosition = GetAttackTargetPosition();
             playerWeaponCur.Attack(targetPosition);
@@ -56,13 +62,9 @@ public class Player : MonoBehaviour
     public void SwitchWeapon()
     {
         if (playerWeaponCur is WeaponHammer)
-        {
-            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/WeaponBlunderbuss"));
-        }
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponBlunderbuss"));
         else
-        {
-            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/WeaponHammer"));
-        }
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponHammer"));
 
         AttachWeaponModel();
     }

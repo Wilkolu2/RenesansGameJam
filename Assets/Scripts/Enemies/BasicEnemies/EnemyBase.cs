@@ -74,7 +74,6 @@ public abstract class EnemyBase : MonoBehaviour
         Debug.Log("Enemy died");
         isDead = true;
         waveManager.OnEnemyKilled();
-        // Add death animation logic here
     }
 
     public int GetEnemyAttackAmount() => enemyAttack;

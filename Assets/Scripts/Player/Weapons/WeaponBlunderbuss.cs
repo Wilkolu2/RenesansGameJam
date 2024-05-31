@@ -3,12 +3,11 @@ using UnityEngine;
 public class WeaponBlunderbuss : WeaponBase
 {
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
 
     public override void Attack(Vector3 targetPosition)
     {
-        if (!CanAttack())
-            return;
+        //if (!CanAttack() || firePoint == null)
+            //return;
 
         Debug.Log("Blunderbuss attack");
 

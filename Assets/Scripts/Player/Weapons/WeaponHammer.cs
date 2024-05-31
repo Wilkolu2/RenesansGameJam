@@ -7,10 +7,8 @@ public class WeaponHammer : WeaponBase
 
     public override void Attack(Vector3 targetPosition)
     {
-        if (!CanAttack())
-            return;
-
-        Debug.Log("Hammer attack");
+        //if (!CanAttack())
+            //return;
 
         playerAttackCooldownTimer = playerAttackCooldown;
 
