@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        enemiesToSpawn.Clear(); // Clear the list after spawning
+        enemiesToSpawn.Clear();
     }
 
     public void ResetSpawner(List<SpawnEntry> newSpawnEntries)

@@ -14,6 +14,8 @@ public class WaveManager : MonoBehaviour
     [Header("Waves")]
     [SerializeField] private List<Wave> waves;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private int bossWaveIndex = 3;  // Change to the wave number when the boss should spawn
+    [SerializeField] private GameObject bossPrefab;
 
     private int currentWaveIndex = 0;
     private bool waveInProgress = false;
@@ -42,8 +44,21 @@ public class WaveManager : MonoBehaviour
 
         yield return new WaitForSeconds(currentWave.delayBetweenWaves);
 
+        if (currentWaveIndex == bossWaveIndex)
+        {
+            SpawnBoss();
+        }
+
         waveInProgress = false;
         currentWaveIndex++;
+    }
+
+    private void SpawnBoss()
+    {
+        foreach (var spawnPoint in spawnPoints)
+        {
+            Instantiate(bossPrefab, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 
     public void OnEnemyKilled()
