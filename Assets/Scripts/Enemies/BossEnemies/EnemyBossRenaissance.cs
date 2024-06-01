@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBoss : EnemyBase
+public class EnemyBossRenaissance : EnemyBase
 {
     [Header("Boss Attacks")]
     [SerializeField] private Transform firePoint;

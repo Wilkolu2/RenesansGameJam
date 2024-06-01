@@ -140,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 6780441598784524007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -160,12 +160,12 @@ GameObject:
   - component: {fileID: 6590774873653294001}
   - component: {fileID: 5606404326325975242}
   m_Layer: 8
-  m_Name: EnemyBoss
+  m_Name: EnemyBossRenaissance
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5016500567099740291
 Transform:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   enemyAttackCooldown: 5
   enemyMaxHp: 1
   firePoint: {fileID: 5079250088400660006}
-  straightProjectilePrefab: {fileID: 3088181961578906182, guid: 70978673e16af704a9b2535b6e52e409,
+  straightProjectilePrefab: {fileID: 3254464016310321094, guid: 2a3df5f82f3cd9a459c3249f6892ab94,
     type: 3}
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
     type: 3}
@@ -268,7 +268,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

@@ -54,7 +54,7 @@ MonoBehaviour:
   enemyAttackRange: 15
   enemyAttackCooldown: 5
   enemyMaxHp: 1
-  straightProjectilePrefab: {fileID: 3088181961578906182, guid: 70978673e16af704a9b2535b6e52e409,
+  straightProjectilePrefab: {fileID: 3254464016310321094, guid: 70978673e16af704a9b2535b6e52e409,
     type: 3}
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
     type: 3}
@@ -103,7 +103,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

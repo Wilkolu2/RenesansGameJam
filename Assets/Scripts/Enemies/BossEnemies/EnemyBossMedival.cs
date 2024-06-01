@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBoss1 : EnemyBase
+public class EnemyBossMedival : EnemyBase
 {
     [Header("Boss Attacks")]
     [SerializeField] private int devourHealAmount;

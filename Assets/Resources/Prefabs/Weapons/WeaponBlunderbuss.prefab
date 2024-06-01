@@ -48,12 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAttackPower: 1
-  playerAttackSpeed: 0
+  playerAttackSpeed: 1
   playerAttackRange: 15
-  playerAttackCooldown: 0
+  playerAttackCooldown: 1
   firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 7821072145667638785}
-  projectilePrefab: {fileID: 3088181961578906182, guid: fe903b7f20f279541b123280440519cc,
+  projectilePrefab: {fileID: 3254464016310321094, guid: f567d95cbd7c9094ea708ac225c1d836,
     type: 3}
 --- !u!65 &3352072441559342349
 BoxCollider:

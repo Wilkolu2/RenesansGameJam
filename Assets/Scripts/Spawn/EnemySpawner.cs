@@ -12,28 +12,18 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Settings")]
     public List<SpawnEntry> enemiesToSpawn;
-    [SerializeField] private float spawnInterval = 2f;
 
-    private float spawnTimer;
-    private bool spawningEnabled = false;
     private WaveManager waveManager;
 
     private void Start()
     {
-        spawnTimer = spawnInterval;
         waveManager = FindObjectOfType<WaveManager>();
     }
 
-    private void Update()
+    public void ResetSpawner(List<SpawnEntry> newSpawnEntries)
     {
-        if (!spawningEnabled) return;
-
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0)
-        {
-            SpawnEnemies();
-            spawnTimer = spawnInterval;
-        }
+        enemiesToSpawn = newSpawnEntries;
+        SpawnEnemies();
     }
 
     private void SpawnEnemies()
@@ -49,22 +39,10 @@ public class EnemySpawner : MonoBehaviour
 
             enemiesToSpawn.RemoveAt(i);
         }
-
-        if (enemiesToSpawn.Count == 0)
-        {
-            spawningEnabled = false;
-        }
-    }
-
-    public void ResetSpawner(List<SpawnEntry> newSpawnEntries)
-    {
-        spawnTimer = spawnInterval;
-        enemiesToSpawn = newSpawnEntries;
-        spawningEnabled = true;
     }
 
     public void DisableSpawner()
     {
-        spawningEnabled = false;
+        enemiesToSpawn.Clear();
     }
 }

@@ -11,10 +11,25 @@ public class EnemyProjectile : MonoBehaviour
 
     protected virtual void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
-        rb.velocity = CalculateVelocity(); // Calculate initial velocity
+        rb.velocity = CalculateVelocity();
         Destroy(gameObject, lifetime);
     }
+
+    /*
+    private void Update()
+    {
+        FacePlayer();
+    }
+
+    private void FacePlayer()
+    {
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
+    }
+    */
 
     public void SetDamage(int amount)
     {

@@ -8,50 +8,51 @@ public class WaveManager : MonoBehaviour
     public class Wave
     {
         public List<EnemySpawner.SpawnEntry> enemiesToSpawn;
-        public float delayBetweenWaves;
+        public int waveMultiplier = 1;
     }
 
     [Header("Waves")]
     [SerializeField] private List<Wave> waves;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private int bossWaveIndex = 3;  // Change to the wave number when the boss should spawn
     [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private int bossWaveFrequency = 3;
 
     private int currentWaveIndex = 0;
+    private int waveMultiplier = 1;
     private bool waveInProgress = false;
     private List<EnemyBase> activeEnemies = new List<EnemyBase>();
 
     private void Start()
     {
-        StartCoroutine(StartNextWave());
+        StartNextWave();
     }
 
-    private IEnumerator StartNextWave()
+    private void StartNextWave()
     {
-        if (currentWaveIndex >= waves.Count)
-        {
-            Debug.Log("All waves completed!");
-            yield break;
-        }
+        if (currentWaveIndex % bossWaveFrequency == 0 && currentWaveIndex != 0)
+            SpawnBoss();
+        else
+            SpawnWave();
+    }
 
+    private void SpawnWave()
+    {
         waveInProgress = true;
-        var currentWave = waves[currentWaveIndex];
+        var currentWave = waves[currentWaveIndex % waves.Count];
 
         foreach (var spawnPoint in spawnPoints)
         {
             var spawner = spawnPoint.GetComponent<EnemySpawner>();
-            spawner.ResetSpawner(new List<EnemySpawner.SpawnEntry>(currentWave.enemiesToSpawn));
+            var modifiedSpawns = new List<EnemySpawner.SpawnEntry>(currentWave.enemiesToSpawn);
+            foreach (var entry in modifiedSpawns)
+            {
+                entry.amount *= waveMultiplier;
+            }
+            spawner.ResetSpawner(modifiedSpawns);
         }
 
-        yield return new WaitForSeconds(currentWave.delayBetweenWaves);
-
-        if (currentWaveIndex == bossWaveIndex)
-        {
-            SpawnBoss();
-        }
-
+        waveMultiplier++;
         waveInProgress = false;
-        currentWaveIndex++;
     }
 
     private void SpawnBoss()
@@ -77,7 +78,8 @@ public class WaveManager : MonoBehaviour
         activeEnemies.Remove(enemy);
         if (!waveInProgress && activeEnemies.Count == 0)
         {
-            StartCoroutine(StartNextWave());
+            currentWaveIndex++;
+            StartNextWave();
         }
     }
 
@@ -85,6 +87,7 @@ public class WaveManager : MonoBehaviour
     {
         StopAllCoroutines();
         currentWaveIndex = 0;
+        waveMultiplier = 1;
         waveInProgress = false;
         foreach (var spawnPoint in spawnPoints)
         {
@@ -99,6 +102,6 @@ public class WaveManager : MonoBehaviour
         }
         activeEnemies.Clear();
 
-        StartCoroutine(StartNextWave());
+        StartNextWave();
     }
 }
