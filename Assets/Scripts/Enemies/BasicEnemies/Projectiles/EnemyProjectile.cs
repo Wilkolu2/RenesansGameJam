@@ -7,18 +7,23 @@ public class EnemyProjectile : MonoBehaviour
     protected Transform player;
     protected Rigidbody rb;
     protected int damageAmount;
+    protected Vector3 targetPosition;
 
     protected virtual void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
+        rb.velocity = CalculateVelocity(); // Calculate initial velocity
         Destroy(gameObject, lifetime);
     }
 
     public void SetDamage(int amount)
     {
         damageAmount = amount;
+    }
+
+    public void SetTarget(Vector3 targetPos)
+    {
+        targetPosition = targetPos;
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -33,5 +38,11 @@ public class EnemyProjectile : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    protected virtual Vector3 CalculateVelocity()
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        return direction * speed;
     }
 }

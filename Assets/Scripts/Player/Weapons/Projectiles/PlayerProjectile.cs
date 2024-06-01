@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float lifetime = 5f;
+    [SerializeField] private LayerMask enemyLayer;
 
     private Vector3 targetPosition;
     private int attackPower;
@@ -13,20 +15,33 @@ public class PlayerProjectile : MonoBehaviour
         this.attackPower = attackPower;
     }
 
+    private void Start()
+    {
+        Destroy(gameObject, lifetime);
+    }
+
     private void Update()
     {
+        MoveTowardsTarget();
+    }
+
+    private void MoveTowardsTarget()
+    {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
-        {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
-            foreach (var hitCollider in hitColliders)
-            {
-                if (hitCollider.TryGetComponent(out EnemyBase enemy))
-                {
-                    enemy.TakeDamage(attackPower);
-                }
-            }
             Destroy(gameObject);
-        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //if (((1 << other.gameObject.layer) & enemyLayer) != 0)
+        //{
+            if (other.TryGetComponent(out EnemyBase enemy))
+            {
+                enemy.TakeDamage(attackPower);
+                Destroy(gameObject);
+            }
+        //}
     }
 }

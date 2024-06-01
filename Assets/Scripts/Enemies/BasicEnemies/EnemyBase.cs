@@ -71,6 +71,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void Die()
     {
+        Destroy(gameObject);
         Debug.Log("Enemy died");
         isDead = true;
         waveManager.OnEnemyKilled();

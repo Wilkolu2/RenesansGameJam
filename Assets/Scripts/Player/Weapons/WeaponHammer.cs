@@ -10,6 +10,8 @@ public class WeaponHammer : WeaponBase
         //if (!CanAttack())
             //return;
 
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA");
+
         playerAttackCooldownTimer = playerAttackCooldown;
 
         Collider[] hitColliders = Physics.OverlapSphere(targetPosition, attackRadius, targetLayer);

@@ -26,7 +26,10 @@ public class EnemyRanged : EnemyBase
         EnemyProjectile enemyProjectile = projectile.GetComponent<EnemyProjectile>();
 
         if (enemyProjectile != null)
+        {
+            enemyProjectile.SetTarget(player.position); // Pass the target position to the projectile
             enemyProjectile.SetDamage(enemyAttack);
+        }
         else
             Debug.LogError("The instantiated projectile does not have an EnemyProjectile component.");
     }

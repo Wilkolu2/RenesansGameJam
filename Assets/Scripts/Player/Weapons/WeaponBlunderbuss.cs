@@ -6,8 +6,8 @@ public class WeaponBlunderbuss : WeaponBase
 
     public override void Attack(Vector3 targetPosition)
     {
-        //if (!CanAttack() || firePoint == null)
-            //return;
+        if (!CanAttack() || firePoint == null)
+            return;
 
         Debug.Log("Blunderbuss attack");
 

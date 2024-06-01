@@ -36,15 +36,21 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        foreach (var entry in enemiesToSpawn)
+        for (int i = enemiesToSpawn.Count - 1; i >= 0; i--)
         {
-            for (int i = 0; i < entry.amount; i++)
+            var entry = enemiesToSpawn[i];
+            for (int j = 0; j < entry.amount; j++)
             {
                 Instantiate(entry.enemyPrefab, transform.position, transform.rotation);
             }
+
+            enemiesToSpawn.RemoveAt(i);
         }
 
-        enemiesToSpawn.Clear();
+        if (enemiesToSpawn.Count == 0)
+        {
+            spawningEnabled = false;
+        }
     }
 
     public void ResetSpawner(List<SpawnEntry> newSpawnEntries)

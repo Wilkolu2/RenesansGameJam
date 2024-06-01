@@ -31,6 +31,6 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
-        waveManager.OnPlayerDeath();
+        GameManager.instance.OnPlayerDeath();
     }
 }

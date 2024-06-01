@@ -61,6 +61,9 @@ public class Player : MonoBehaviour
 
     public void SwitchWeapon()
     {
+        if (currentWeaponModel != null)
+            Destroy(currentWeaponModel);
+
         if (playerWeaponCur is WeaponHammer)
             playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponBlunderbuss"));
         else
@@ -69,9 +72,23 @@ public class Player : MonoBehaviour
         AttachWeaponModel();
     }
 
-    public void SetPlayerCurHp(int hp) => playerHpCur = hp;
-    public void ModifyPlayerHp(int amount) => playerHpCur += amount;
-    public int GetPlayerCurHp() => playerHpCur;
-    public int GetPlayerMaxHp() => playerHpMax;
-    public Vector3 GetPlayerPos() => playerPos;
+    public void ModifyPlayerHp(int amount)
+    {
+        playerHpCur = Mathf.Clamp(playerHpCur + amount, 0, playerHpMax);
+    }
+
+    public void SetPlayerCurHp(int value)
+    {
+        playerHpCur = value;
+    }
+
+    public int GetPlayerCurHp()
+    {
+        return playerHpCur;
+    }
+
+    public int GetPlayerMaxHp()
+    {
+        return playerHpMax;
+    }
 }

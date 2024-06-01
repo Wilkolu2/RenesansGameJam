@@ -11,7 +11,7 @@ public class StraightProjectile : EnemyProjectile
     protected override void Start()
     {
         base.Start();
-        rb.velocity = transform.forward * speed;
+        rb.velocity = CalculateVelocity();
     }
 
     protected override void OnTriggerEnter(Collider other)
