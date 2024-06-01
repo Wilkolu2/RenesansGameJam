@@ -7,7 +7,7 @@ public abstract class WeaponBase : MonoBehaviour
     [Header("Stats")]
     [SerializeField] protected int playerAttackPower;
     [SerializeField] protected float playerAttackSpeed;
-    [SerializeField] protected float playerAttackRange;
+    [SerializeField] public float playerAttackRange;
     [SerializeField] protected float playerAttackCooldown;
     [SerializeField] protected Transform firePoint;
     [SerializeField] public GameObject weaponModelPrefab;

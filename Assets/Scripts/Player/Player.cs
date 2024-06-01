@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 
     private Vector3 GetAttackTargetPosition()
     {
-        return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
+        return transform.position + transform.forward * playerWeaponCur.playerAttackRange;
     }
 
     public void SwitchWeapon()

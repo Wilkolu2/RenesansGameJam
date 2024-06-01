@@ -8,6 +8,7 @@ public class PlayerProjectile : MonoBehaviour
 
     private Vector3 targetPosition;
     private int attackPower;
+    private Rigidbody rb;
 
     public void Initialize(Vector3 targetPosition, int attackPower)
     {
@@ -17,6 +18,8 @@ public class PlayerProjectile : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
         Destroy(gameObject, lifetime);
     }
 
@@ -35,13 +38,18 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (((1 << other.gameObject.layer) & enemyLayer) != 0)
-        //{
-            if (other.TryGetComponent(out EnemyBase enemy))
+        if (((1 << other.gameObject.layer) & enemyLayer) != 0)
+        {
+            if (other.TryGetComponent(out Cocoon cocoon))
+            {
+                cocoon.TakeDamage(attackPower);
+                Destroy(gameObject);
+            }
+            else if (other.TryGetComponent(out EnemyBase enemy))
             {
                 enemy.TakeDamage(attackPower);
                 Destroy(gameObject);
             }
-        //}
+        }
     }
 }

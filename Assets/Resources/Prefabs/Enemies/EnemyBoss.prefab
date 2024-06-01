@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 278246432153705814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,6 +115,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6780441598784524007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5735343176998701100}
+  m_Layer: 8
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5735343176998701100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780441598784524007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5016500567099740291}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6782735480181503833
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5016500567099740291}
   - component: {fileID: 4296018488966278360}
+  - component: {fileID: 504220395727888612}
   - component: {fileID: 6590774873653294001}
   - component: {fileID: 5606404326325975242}
   m_Layer: 8
@@ -133,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5016500567099740291
 Transform:
   m_ObjectHideFlags: 0
@@ -147,6 +179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5735343176998701100}
   - {fileID: 5079250088400660006}
   - {fileID: 2667233362365757196}
   m_Father: {fileID: 0}
@@ -167,16 +200,31 @@ MonoBehaviour:
   enemyMoveSpeed: 15
   enemyAttackRange: 20
   enemyAttackCooldown: 5
-  enemyMaxHp: 10
-  specialAttackCooldown: 15
-  specialAttack1Prefab: {fileID: 0}
-  specialAttack2Prefab: {fileID: 0}
+  enemyMaxHp: 1
   firePoint: {fileID: 5079250088400660006}
   straightProjectilePrefab: {fileID: 3088181961578906182, guid: 70978673e16af704a9b2535b6e52e409,
     type: 3}
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
     type: 3}
   useArcProjectile: 0
+--- !u!114 &504220395727888612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782735480181503833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce40deb186f7e14191bb976a89b422e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1499065905708882013, guid: 138b9a574723c194ebb2004b4481fdd6,
+    type: 3}
+  spawnPoint: {fileID: 5735343176998701100}
+  spawnInterval: 5
+  spawnDelay: 3
+  bossObject: {fileID: 6782735480181503833}
 --- !u!65 &6590774873653294001
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -220,7 +268,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

@@ -18,7 +18,6 @@ public class Cocoon : MonoBehaviour
         cocoonCurHp = cocoonMaxHp;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(HatchTimer());
-        PositionOnGround();
     }
 
     private void Update()
@@ -65,19 +64,5 @@ public class Cocoon : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
-    }
-
-    private void PositionOnGround()
-    {
-        // Ensure the Cocoon is positioned on the ground
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
-        {
-            transform.position = hit.point;
-        }
-        else
-        {
-            Debug.LogWarning("Cocoon could not find the ground.");
-        }
     }
 }

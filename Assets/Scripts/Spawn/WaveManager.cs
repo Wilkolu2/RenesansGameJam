@@ -19,6 +19,7 @@ public class WaveManager : MonoBehaviour
 
     private int currentWaveIndex = 0;
     private bool waveInProgress = false;
+    private List<EnemyBase> activeEnemies = new List<EnemyBase>();
 
     private void Start()
     {
@@ -57,16 +58,24 @@ public class WaveManager : MonoBehaviour
     {
         foreach (var spawnPoint in spawnPoints)
         {
-            Instantiate(bossPrefab, spawnPoint.position, spawnPoint.rotation);
+            var boss = Instantiate(bossPrefab, spawnPoint.position, spawnPoint.rotation);
+            RegisterSpawnedEnemy(boss.GetComponent<EnemyBase>());
         }
     }
 
-    public void OnEnemyKilled()
+    public void RegisterSpawnedEnemy(EnemyBase enemy)
     {
-        if (waveInProgress) return;
+        if (enemy != null)
+        {
+            activeEnemies.Add(enemy);
+            enemy.OnDeath += OnEnemyKilled;
+        }
+    }
 
-        var enemies = FindObjectsOfType<EnemyBase>();
-        if (enemies.Length == 0)
+    private void OnEnemyKilled(EnemyBase enemy)
+    {
+        activeEnemies.Remove(enemy);
+        if (!waveInProgress && activeEnemies.Count == 0)
         {
             StartCoroutine(StartNextWave());
         }
@@ -82,6 +91,14 @@ public class WaveManager : MonoBehaviour
             var spawner = spawnPoint.GetComponent<EnemySpawner>();
             spawner.DisableSpawner();
         }
+
+        foreach (var enemy in activeEnemies)
+        {
+            if (enemy != null)
+                Destroy(enemy.gameObject);
+        }
+        activeEnemies.Clear();
+
         StartCoroutine(StartNextWave());
     }
 }

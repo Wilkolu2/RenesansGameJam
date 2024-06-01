@@ -16,10 +16,12 @@ public class EnemySpawner : MonoBehaviour
 
     private float spawnTimer;
     private bool spawningEnabled = false;
+    private WaveManager waveManager;
 
     private void Start()
     {
         spawnTimer = spawnInterval;
+        waveManager = FindObjectOfType<WaveManager>();
     }
 
     private void Update()
@@ -41,7 +43,8 @@ public class EnemySpawner : MonoBehaviour
             var entry = enemiesToSpawn[i];
             for (int j = 0; j < entry.amount; j++)
             {
-                Instantiate(entry.enemyPrefab, transform.position, transform.rotation);
+                var enemy = Instantiate(entry.enemyPrefab, transform.position, transform.rotation);
+                waveManager.RegisterSpawnedEnemy(enemy.GetComponent<EnemyBase>());
             }
 
             enemiesToSpawn.RemoveAt(i);

@@ -17,5 +17,7 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         SceneManager.LoadScene(nextArenaSceneName);
+        WaveManager waveManager = FindObjectOfType<WaveManager>();
+        waveManager.OnPlayerDeath();
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5978506830350745174}
   - component: {fileID: 6541102825776441290}
-  - component: {fileID: 5534169753322469904}
   - component: {fileID: 3352072441559342349}
+  - component: {fileID: 5534169753322469904}
   m_Layer: 0
   m_Name: WeaponBlunderbuss
   m_TagString: Untagged
@@ -48,13 +48,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAttackPower: 1
-  playerAttackSpeed: 5
+  playerAttackSpeed: 0
   playerAttackRange: 15
-  playerAttackCooldown: 5
+  playerAttackCooldown: 0
   firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 7821072145667638785}
   projectilePrefab: {fileID: 3088181961578906182, guid: fe903b7f20f279541b123280440519cc,
     type: 3}
+--- !u!65 &3352072441559342349
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821072145667638785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.13737959, y: 0.14743347, z: 0.7710339}
+  m_Center: {x: 0.017524958, y: 0.025872717, z: 0.09453684}
 --- !u!54 &5534169753322469904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82,27 +103,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &3352072441559342349
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821072145667638785}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.13737959, y: 0.14743347, z: 0.7710339}
-  m_Center: {x: 0.017524958, y: 0.025872717, z: 0.09453684}
 --- !u!1001 &1571331954536256418
 PrefabInstance:
   m_ObjectHideFlags: 0

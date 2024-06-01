@@ -19,6 +19,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     private WaveManager waveManager;
 
+    public int EnemyMaxHp => enemyMaxHp;
+    public bool IsDead => isDead;
+
+    public event System.Action<EnemyBase> OnDeath;
+
     public virtual void Start()
     {
         enemyCurHp = enemyMaxHp;
@@ -30,7 +35,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected void Update()
     {
-        if (isDead) return;
+        if (isDead)
+            return;
 
         FacePlayer();
         MoveTowardsPlayer();
@@ -71,10 +77,10 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void Die()
     {
+        isDead = true;
+        OnDeath?.Invoke(this);
         Destroy(gameObject);
         Debug.Log("Enemy died");
-        isDead = true;
-        waveManager.OnEnemyKilled();
     }
 
     public int GetEnemyAttackAmount() => enemyAttack;
