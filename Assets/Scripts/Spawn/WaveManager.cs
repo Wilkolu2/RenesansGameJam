@@ -88,11 +88,18 @@ public class WaveManager : MonoBehaviour
     private void OnEnemyKilled(EnemyBase enemy)
     {
         activeEnemies.Remove(enemy);
+
+        // Notify the player of the kill
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.IncrementEnemiesKilled();
+        }
+
         if (!waveInProgress && activeEnemies.Count == 0)
         {
             currentWaveIndex++;
             StartNextWave();
-            Player player = FindObjectOfType<Player>();
             if (player != null)
             {
                 player.IncrementWavesCleared();

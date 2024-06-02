@@ -9,9 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerHpMax;
     [SerializeField] private WeaponBase playerWeaponCur;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private int enemiesUntilLifeRegen = 50; // Number of enemies to kill before regaining a life
     private static Player instance;
     private int spareLives = 1;
-    private int wavesUntilLifeRegen = 3;
+    private int enemiesKilled = 0;
+    private int wavesUntilLifeRegen = 3; // Number of waves to clear before regaining a life
     private int wavesCleared = 0;
 
     private int playerHpCur;
@@ -124,12 +126,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void RegenLife()
+    public void IncrementEnemiesKilled()
     {
-        if (spareLives < 1)
+        enemiesKilled++;
+        if (enemiesKilled >= enemiesUntilLifeRegen)
         {
-            spareLives++;
+            RegainLife();
+            enemiesKilled = 0; // Reset counter after life is regained
         }
+    }
+
+    private void RegainLife()
+    {
+        spareLives++;
+        Debug.Log("Player regained a spare life!");
     }
 
     public void IncrementWavesCleared()
@@ -137,7 +147,7 @@ public class Player : MonoBehaviour
         wavesCleared++;
         if (wavesCleared >= wavesUntilLifeRegen)
         {
-            RegenLife();
+            RegainLife();
             wavesCleared = 0; // Reset counter after life is regenerated
         }
     }
