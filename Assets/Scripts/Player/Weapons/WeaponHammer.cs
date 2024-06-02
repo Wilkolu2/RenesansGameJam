@@ -4,6 +4,12 @@ public class WeaponHammer : WeaponBase
 {
     [SerializeField] private float attackRadius;
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private Player player;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
 
     public override void Attack(Vector3 targetPosition)
     {
@@ -14,7 +20,7 @@ public class WeaponHammer : WeaponBase
 
         playerAttackCooldownTimer = playerAttackCooldown;
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRadius, targetLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(player.transform.position, attackRadius, targetLayer);
 
         foreach (var hitCollider in hitColliders)
         {
