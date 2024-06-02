@@ -601,6 +601,7 @@ MonoBehaviour:
     waveIncrement: 1
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
+<<<<<<< Updated upstream
         type: 3}
       amount: 1
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
@@ -609,6 +610,8 @@ MonoBehaviour:
     waveIncrement: 1
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
+=======
+>>>>>>> Stashed changes
         type: 3}
       amount: 2
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
@@ -617,10 +620,25 @@ MonoBehaviour:
     waveIncrement: 1
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
+<<<<<<< Updated upstream
         type: 3}
       amount: 2
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
         type: 3}
+=======
+        type: 3}
+      amount: 3
+    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
+        type: 3}
+      amount: 1
+    waveIncrement: 1
+  - enemiesToSpawn:
+    - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
+        type: 3}
+      amount: 3
+    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
+        type: 3}
+>>>>>>> Stashed changes
       amount: 2
     waveIncrement: 1
   spawnPoints:
@@ -628,7 +646,11 @@ MonoBehaviour:
   - {fileID: 297426929}
   - {fileID: 924341726}
   - {fileID: 1631422905}
+<<<<<<< Updated upstream
   bossPrefab: {fileID: 4938194184948232015, guid: 0b0501c7a48f53842a176924bc98eb4b,
+=======
+  bossPrefab: {fileID: 5713052453502083004, guid: 0b0501c7a48f53842a176924bc98eb4b,
+>>>>>>> Stashed changes
     type: 3}
   bossWaveFrequency: 6
 --- !u!4 &820652013
