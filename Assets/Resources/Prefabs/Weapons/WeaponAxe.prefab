@@ -47,13 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5230599727ecea84080575180b5aea94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackPower: 5
+  playerAttackPower: 2
   playerAttackSpeed: 5
   playerAttackRange: 5
   playerAttackCooldown: 5
   firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 6937237886642379193}
-  attackRadius: 5
+  attackRadius: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 0

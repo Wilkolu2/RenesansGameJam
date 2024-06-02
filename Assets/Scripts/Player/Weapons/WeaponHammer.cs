@@ -4,11 +4,11 @@ public class WeaponHammer : WeaponBase
 {
     [SerializeField] private float attackRadius;
     [SerializeField] private LayerMask targetLayer;
-    [SerializeField] private Player player;
+    private Player player;
 
-    private void Awake()
+    public void Initialize(Player player)
     {
-        player = GetComponent<Player>();
+        this.player = player;
     }
 
     public override void Attack(Vector3 targetPosition)
@@ -16,10 +16,17 @@ public class WeaponHammer : WeaponBase
         if (!CanAttack())
             return;
 
+        if (player == null)
+        {
+            Debug.LogError("Player reference is null during attack.");
+            return;
+        }
+
         Debug.Log("Hammer attack");
 
         playerAttackCooldownTimer = playerAttackCooldown;
 
+        // Use the player's position instead of the weapon's position
         Collider[] hitColliders = Physics.OverlapSphere(player.transform.position, attackRadius, targetLayer);
 
         foreach (var hitCollider in hitColliders)
@@ -39,10 +46,18 @@ public class WeaponHammer : WeaponBase
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        if (player == null)
+        {
+            player = GetComponentInParent<Player>();
+        }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, playerAttackRange);
+        if (player != null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(player.transform.position, attackRadius);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(player.transform.position, playerAttackRange);
+        }
     }
 }

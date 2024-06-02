@@ -65,6 +65,12 @@ public class Player : MonoBehaviour
         currentWeaponModel = Instantiate(playerWeaponCur.weaponModelPrefab, weaponHoldPoint);
         currentWeaponModel.transform.localPosition = Vector3.zero;
         currentWeaponModel.transform.localRotation = Quaternion.identity;
+
+        // Ensure the weapon is properly initialized with the player reference
+        if (playerWeaponCur is WeaponHammer hammer)
+        {
+            hammer.Initialize(this);
+        }
     }
 
     public void Attack()
@@ -72,9 +78,8 @@ public class Player : MonoBehaviour
         if (playerWeaponCur != null && playerWeaponCur.CanAttack())
         {
             Vector3 targetPosition = GetAttackTargetPosition();
-            playerWeaponCur.Attack(targetPosition);
+            playerWeaponCur.Attack(playerPos); // Pass player position
             audioSource.PlayOneShot(attackClip);
-            ///annimation
         }
     }
 
@@ -159,6 +164,7 @@ public class Player : MonoBehaviour
     private void RegainLife()
     {
         spareLives++;
+        Debug.Log("Player regained a spare life!");
     }
 
     public void IncrementWavesCleared()
@@ -177,3 +183,4 @@ public class Player : MonoBehaviour
         playerHpCur = playerHpMax;
     }
 }
+
