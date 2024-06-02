@@ -714,7 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemiesToSpawn:
-    - enemyPrefab: {fileID: 1885987679364773135, guid: 4cc4bcb13c2040242b227dbfdd3f32fe,
+    - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
         type: 3}
       amount: 1
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
