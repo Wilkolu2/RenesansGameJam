@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] private string nextArenaSceneName;
+    [SerializeField] private string menuSceneName;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         if (player != null)
         {
-            player.ChangeWeaponOnDeath(); // Change the player's weapon on death
+            player.ChangeWeaponOnDeath();
 
             if (player.HasSpareLife())
             {
@@ -29,26 +30,18 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(WaitForSceneLoad(player));
             }
             else
-            {
                 OnPlayerDeathPermanent();
-            }
-        }
-        else
-        {
-            Debug.LogError("Player not found!");
         }
     }
 
     public void OnPlayerDeathPermanent()
     {
-        Debug.Log("Player has died permanently. Game Over.");
-        // Implement game over logic here
-        // e.g., SceneManager.LoadScene(gameOverSceneName);
+        SceneManager.LoadScene(menuSceneName);
     }
 
     private IEnumerator WaitForSceneLoad(Player player)
     {
-        yield return new WaitForSeconds(1f);  // Wait a bit for the scene to load
+        yield return new WaitForSeconds(1f);
 
         WaveManager waveManager = FindObjectOfType<WaveManager>();
         if (waveManager != null)
@@ -56,9 +49,7 @@ public class GameManager : MonoBehaviour
             waveManager.OnPlayerDeath();
         }
         else
-        {
             Debug.LogError("WaveManager not found after scene load!");
-        }
 
         player.ResetPlayer();
     }

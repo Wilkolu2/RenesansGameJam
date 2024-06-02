@@ -8,9 +8,10 @@ public class EnemyMelee : EnemyBase
 
         if (enemyAttackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
         {
-
             if (playerHealth != null)
                 playerHealth.TakeDamage(enemyAttack);
+
+            audioSource.PlayOneShot(attackSound);
 
             enemyAttackCooldownTimer = enemyAttackCooldown;
         }

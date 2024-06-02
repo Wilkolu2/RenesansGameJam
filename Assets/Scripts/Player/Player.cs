@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
             Vector3 targetPosition = GetAttackTargetPosition();
             playerWeaponCur.Attack(targetPosition);
             audioSource.PlayOneShot(attackClip);
+            ///annimation
         }
     }
 
@@ -151,14 +152,13 @@ public class Player : MonoBehaviour
         if (enemiesKilled >= enemiesUntilLifeRegen)
         {
             RegainLife();
-            enemiesKilled = 0; // Reset counter after life is regained
+            enemiesKilled = 0;
         }
     }
 
     private void RegainLife()
     {
         spareLives++;
-        Debug.Log("Player regained a spare life!");
     }
 
     public void IncrementWavesCleared()
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
         if (wavesCleared >= wavesUntilLifeRegen)
         {
             RegainLife();
-            wavesCleared = 0; // Reset counter after life is regenerated
+            wavesCleared = 0;
         }
     }
 

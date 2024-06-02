@@ -10,8 +10,6 @@ public class WeaponAxe : WeaponBase
         if (!CanAttack())
             return;
 
-        Debug.Log("Hammer attack");
-
         playerAttackCooldownTimer = playerAttackCooldown;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRadius, targetLayer);
@@ -21,12 +19,10 @@ public class WeaponAxe : WeaponBase
             if (hitCollider.TryGetComponent(out EnemyBase enemy))
             {
                 enemy.TakeDamage(playerAttackPower);
-                Debug.Log("Enemy hit by hammer");
             }
             if (hitCollider.TryGetComponent(out Cocoon cocoon))
             {
                 cocoon.TakeDamage(playerAttackPower);
-                Debug.Log("Cocoon hit by hammer");
             }
         }
     }

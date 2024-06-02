@@ -14,6 +14,9 @@ public class EnemyRanged : EnemyBase
         if (enemyAttackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
         {
             ShootProjectile();
+
+            audioSource.PlayOneShot(attackSound);
+
             enemyAttackCooldownTimer = enemyAttackCooldown;
         }
     }
@@ -29,11 +32,9 @@ public class EnemyRanged : EnemyBase
 
         if (enemyProjectile != null)
         {
-            enemyProjectile.SetTarget(player.position); // Pass the target position to the projectile
+            enemyProjectile.SetTarget(player.position);
             enemyProjectile.SetDamage(enemyAttack);
         }
-        else
-            Debug.LogError("The instantiated projectile does not have an EnemyProjectile component.");
     }
 
     private new void Update()

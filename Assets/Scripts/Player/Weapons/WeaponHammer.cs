@@ -35,5 +35,8 @@ public class WeaponHammer : WeaponBase
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, playerAttackRange);
     }
 }

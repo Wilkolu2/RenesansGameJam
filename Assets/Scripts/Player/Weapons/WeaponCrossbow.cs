@@ -9,8 +9,6 @@ public class WeaponCrossbow : WeaponBase
         if (!CanAttack() || firePoint == null)
             return;
 
-        Debug.Log("Blunderbuss attack");
-
         playerAttackCooldownTimer = playerAttackCooldown;
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);

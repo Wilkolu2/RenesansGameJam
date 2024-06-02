@@ -51,6 +51,13 @@ public abstract class EnemyBase : MonoBehaviour
         FacePlayer();
         MoveTowardsPlayer();
         HandleAttackCooldown();
+
+        // If in attack range, attack
+        if (Vector3.Distance(transform.position, player.position) <= enemyAttackRange && enemyAttackCooldownTimer <= 0f)
+        {
+            Attack();
+            enemyAttackCooldownTimer = enemyAttackCooldown;
+        }
     }
 
     private void FacePlayer()
@@ -85,13 +92,14 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Attack()
     {
         animator.SetTrigger("Attack");
-        audioSource.PlayOneShot(attackSound);
     }
 
     private void HandleAttackCooldown()
     {
         if (enemyAttackCooldownTimer > 0f)
+        {
             enemyAttackCooldownTimer -= Time.deltaTime;
+        }
     }
 
     private void Die()
@@ -105,7 +113,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         audioSource.PlayOneShot(deathSound);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(deathSound.length);
 
         Destroy(gameObject);
     }
