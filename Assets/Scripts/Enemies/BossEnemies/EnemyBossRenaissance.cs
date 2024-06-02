@@ -8,6 +8,8 @@ public class EnemyBossRenaissance : EnemyBase
     [SerializeField] private GameObject arcProjectilePrefab;
     [SerializeField] private bool useArcProjectile = false;
 
+    public string Era => "Renaissance";
+
     public override void Start()
     {
         base.Start();

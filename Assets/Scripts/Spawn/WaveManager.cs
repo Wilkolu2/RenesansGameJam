@@ -17,10 +17,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private int bossWaveFrequency = 3;
 
-    private int currentWaveIndex = 0;
+    private static int currentWaveIndex = 0; // Static variable to persist wave index between scene loads
     private int waveMultiplier = 1;
     private bool waveInProgress = false;
     private List<EnemyBase> activeEnemies = new List<EnemyBase>();
+    private bool isBossWave = false;
 
     private void Start()
     {
@@ -30,9 +31,15 @@ public class WaveManager : MonoBehaviour
     private void StartNextWave()
     {
         if (currentWaveIndex % bossWaveFrequency == 0 && currentWaveIndex != 0)
+        {
+            isBossWave = true;
             SpawnBoss();
+        }
         else
+        {
+            isBossWave = false;
             SpawnWave();
+        }
     }
 
     private void SpawnWave()
@@ -64,6 +71,11 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    public bool IsBossWave()
+    {
+        return isBossWave;
+    }
+
     public void RegisterSpawnedEnemy(EnemyBase enemy)
     {
         if (enemy != null)
@@ -80,13 +92,17 @@ public class WaveManager : MonoBehaviour
         {
             currentWaveIndex++;
             StartNextWave();
+            Player player = FindObjectOfType<Player>();
+            if (player != null)
+            {
+                player.IncrementWavesCleared();
+            }
         }
     }
 
     public void OnPlayerDeath()
     {
         StopAllCoroutines();
-        currentWaveIndex = 0;
         waveMultiplier = 1;
         waveInProgress = false;
         foreach (var spawnPoint in spawnPoints)

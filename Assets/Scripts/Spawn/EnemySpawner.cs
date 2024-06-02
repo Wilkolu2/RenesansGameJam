@@ -18,6 +18,21 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         waveManager = FindObjectOfType<WaveManager>();
+
+        if (waveManager == null)
+        {
+            Debug.LogError("WaveManager not found!");
+        }
+    }
+
+    private void OnEnable()
+    {
+        waveManager = FindObjectOfType<WaveManager>();
+
+        if (waveManager == null)
+        {
+            Debug.LogError("WaveManager not found!");
+        }
     }
 
     public void ResetSpawner(List<SpawnEntry> newSpawnEntries)
@@ -34,7 +49,22 @@ public class EnemySpawner : MonoBehaviour
             for (int j = 0; j < entry.amount; j++)
             {
                 var enemy = Instantiate(entry.enemyPrefab, transform.position, transform.rotation);
-                waveManager.RegisterSpawnedEnemy(enemy.GetComponent<EnemyBase>());
+                var enemyBase = enemy.GetComponent<EnemyBase>();
+                if (enemyBase != null)
+                {
+                    if (waveManager != null)
+                    {
+                        waveManager.RegisterSpawnedEnemy(enemyBase);
+                    }
+                    else
+                    {
+                        Debug.LogError("WaveManager is null when trying to register spawned enemy.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Spawned enemy does not have an EnemyBase component.");
+                }
             }
 
             enemiesToSpawn.RemoveAt(i);

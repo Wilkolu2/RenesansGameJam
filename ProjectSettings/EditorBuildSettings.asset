@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/medival.unity
     guid: b876506abeabde34687627d213664335
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: a50d60d5f786c434b8f4adcab1db841d
   m_configObjects: {}

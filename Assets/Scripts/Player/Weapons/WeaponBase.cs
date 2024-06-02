@@ -18,6 +18,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected void Start()
     {
+        playerAttackPower = 10;
         playerAttackCooldownTimer = 0f;
         playerAttackCooldown = 5f;
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -8,10 +9,27 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerHpMax;
     [SerializeField] private WeaponBase playerWeaponCur;
     [SerializeField] private Transform firePoint;
+    private static Player instance;
+    private int spareLives = 1;
+    private int wavesUntilLifeRegen = 3;
+    private int wavesCleared = 0;
 
     private int playerHpCur;
     private Vector3 playerPos;
     private GameObject currentWeaponModel;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -90,5 +108,43 @@ public class Player : MonoBehaviour
     public int GetPlayerMaxHp()
     {
         return playerHpMax;
+    }
+
+    public bool HasSpareLife()
+    {
+        return spareLives > 0;
+    }
+
+    public void LoseSpareLife()
+    {
+        if (spareLives > 0)
+        {
+            spareLives--;
+            ResetPlayer();
+        }
+    }
+
+    public void RegenLife()
+    {
+        if (spareLives < 1)
+        {
+            spareLives++;
+        }
+    }
+
+    public void IncrementWavesCleared()
+    {
+        wavesCleared++;
+        if (wavesCleared >= wavesUntilLifeRegen)
+        {
+            RegenLife();
+            wavesCleared = 0; // Reset counter after life is regenerated
+        }
+    }
+
+    public void ResetPlayer()
+    {
+        SetPlayerCurHp(GetPlayerMaxHp());
+        playerHpCur = playerHpMax;
     }
 }

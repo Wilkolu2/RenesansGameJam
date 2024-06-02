@@ -15,6 +15,7 @@ public class WeaponHammer : WeaponBase
         playerAttackCooldownTimer = playerAttackCooldown;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRadius, targetLayer);
+
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.TryGetComponent(out EnemyBase enemy))

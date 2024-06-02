@@ -13,6 +13,7 @@ public class EnemyBossMedival : EnemyBase
 
     private float specialAttackCurrentCooldown;
     private float specialAttackCooldownTimer;
+    public string Era => "Medieval";
 
     public override void Start()
     {

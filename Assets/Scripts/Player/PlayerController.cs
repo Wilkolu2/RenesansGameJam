@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         dashTimer = 0;
         dashCooldownTimer = 0;
-
-
     }
 
     private void Update()
@@ -109,7 +107,7 @@ public class PlayerController : MonoBehaviour
             dashTimer -= Time.deltaTime;
             if (dashTimer <= 0)
                 isDashing = false;
-                rigbody.velocity = Vector3.zero;
+            rigbody.velocity = Vector3.zero;
         }
         else if (dashCooldownTimer > 0)
             dashCooldownTimer -= Time.deltaTime;
