@@ -586,43 +586,43 @@ MonoBehaviour:
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
         type: 3}
-      amount: 2
+      amount: 0
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
         type: 3}
       amount: 0
-    waveIncrement: 5
+    waveIncrement: 1
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
         type: 3}
-      amount: 3
+      amount: 1
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
         type: 3}
       amount: 0
-    waveIncrement: 5
+    waveIncrement: 1
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
         type: 3}
-      amount: 4
-    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
-        type: 3}
-      amount: 0
-    waveIncrement: 5
-  - enemiesToSpawn:
-    - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
-        type: 3}
-      amount: 5
+      amount: 1
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
         type: 3}
       amount: 1
-    waveIncrement: 5
+    waveIncrement: 1
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
         type: 3}
-      amount: 6
+      amount: 2
+    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
+        type: 3}
+      amount: 1
+    waveIncrement: 1
+  - enemiesToSpawn:
+    - enemyPrefab: {fileID: 1885987679364773135, guid: 16e95032f8cb4a74aada2e7d5495a7ec,
+        type: 3}
+      amount: 2
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
         type: 3}
       amount: 2
-    waveIncrement: 5
+    waveIncrement: 1
   spawnPoints:
   - {fileID: 1880024916}
   - {fileID: 297426929}

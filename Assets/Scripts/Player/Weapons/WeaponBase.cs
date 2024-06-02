@@ -20,7 +20,7 @@ public abstract class WeaponBase : MonoBehaviour
     {
         playerAttackPower = 10;
         playerAttackCooldownTimer = 0f;
-        playerAttackCooldown = 5f;
+        playerAttackCooldown = 0.3f;
     }
 
     protected void Update()

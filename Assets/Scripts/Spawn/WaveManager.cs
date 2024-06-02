@@ -17,7 +17,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private int bossWaveFrequency = 3;
 
-    private static int currentWaveIndex = 0; // Static variable to persist wave index between scene loads
+    private static int currentWaveIndex = 0;
     private int waveMultiplier = 1;
     private bool waveInProgress = false;
     private List<EnemyBase> activeEnemies = new List<EnemyBase>();
@@ -46,6 +46,7 @@ public class WaveManager : MonoBehaviour
     {
         waveInProgress = true;
         var currentWave = waves[currentWaveIndex % waves.Count];
+        int waveCycle = (currentWaveIndex / waves.Count) + 1;
 
         foreach (var spawnPoint in spawnPoints)
         {
@@ -56,14 +57,13 @@ public class WaveManager : MonoBehaviour
                 var newEntry = new EnemySpawner.SpawnEntry
                 {
                     enemyPrefab = entry.enemyPrefab,
-                    amount = entry.amount + (waveMultiplier * currentWave.waveIncrement)
+                    amount = entry.amount + (waveCycle * currentWave.waveIncrement)
                 };
                 modifiedSpawns.Add(newEntry);
             }
             spawner.ResetSpawner(modifiedSpawns);
         }
 
-        waveMultiplier++;
         waveInProgress = false;
     }
 
