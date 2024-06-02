@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public abstract class EnemyBase : MonoBehaviour
 {
     [Header("Stats")]
@@ -10,12 +13,16 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected float enemyAttackRange;
     [SerializeField] protected float enemyAttackCooldown;
     [SerializeField] protected int enemyMaxHp = 1;
+    [SerializeField] protected AudioClip attackSound;
+    [SerializeField] protected AudioClip deathSound;
 
     protected int enemyCurHp;
     protected float enemyAttackCooldownTimer;
     protected Transform player;
     protected PlayerHealth playerHealth;
     protected bool isDead = false;
+    protected Animator animator;
+    protected AudioSource audioSource;
 
     private WaveManager waveManager;
 
@@ -31,6 +38,9 @@ public abstract class EnemyBase : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         waveManager = FindObjectOfType<WaveManager>();
         enemyAttackCooldownTimer = 0f;
+
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected void Update()
@@ -56,6 +66,11 @@ public abstract class EnemyBase : MonoBehaviour
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * enemyMoveSpeed * Time.deltaTime;
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 
@@ -67,7 +82,11 @@ public abstract class EnemyBase : MonoBehaviour
             Die();
     }
 
-    protected virtual void Attack() { }
+    protected virtual void Attack()
+    {
+        animator.SetTrigger("Attack");
+        audioSource.PlayOneShot(attackSound);
+    }
 
     private void HandleAttackCooldown()
     {
@@ -79,8 +98,16 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isDead = true;
         OnDeath?.Invoke(this);
+        StartCoroutine(PlayDeathSoundAndDestroy());
+    }
+
+    private IEnumerator PlayDeathSoundAndDestroy()
+    {
+        audioSource.PlayOneShot(deathSound);
+
+        yield return new WaitForSeconds(0.2f);
+
         Destroy(gameObject);
-        Debug.Log("Enemy died");
     }
 
     public int GetEnemyAttackAmount() => enemyAttack;

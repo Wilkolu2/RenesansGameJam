@@ -9,11 +9,15 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerHpMax;
     [SerializeField] private WeaponBase playerWeaponCur;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private int enemiesUntilLifeRegen = 50; // Number of enemies to kill before regaining a life
+    [SerializeField] private int enemiesUntilLifeRegen = 50;
+
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected AudioClip attackClip;
+
     private static Player instance;
     private int spareLives = 1;
     private int enemiesKilled = 0;
-    private int wavesUntilLifeRegen = 3; // Number of waves to clear before regaining a life
+    private int wavesUntilLifeRegen = 3;
     private int wavesCleared = 0;
 
     private int playerHpCur;
@@ -28,9 +32,7 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
     {
         playerPos = transform.position;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
             Attack();
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
         {
             Vector3 targetPosition = GetAttackTargetPosition();
             playerWeaponCur.Attack(targetPosition);
+            audioSource.PlayOneShot(attackClip);
         }
     }
 
@@ -84,9 +87,25 @@ public class Player : MonoBehaviour
         if (currentWeaponModel != null)
             Destroy(currentWeaponModel);
 
-        if (playerWeaponCur is WeaponHammer)
+        if (playerWeaponCur is null)
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponHammer"));
+        else if (playerWeaponCur is WeaponHammer)
             playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponBlunderbuss"));
-        else
+        else if (playerWeaponCur is WeaponBlunderbuss)
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponHammer"));
+        else if (playerWeaponCur is WeaponAxe)
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponCrossbow"));
+        else if (playerWeaponCur is WeaponCrossbow)
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponAxe"));
+
+        AttachWeaponModel();
+    }
+
+    public void ChangeWeaponOnDeath()
+    {
+        if (playerWeaponCur is WeaponHammer || playerWeaponCur is WeaponBlunderbuss)
+            playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponAxe"));
+        else if (playerWeaponCur is WeaponAxe || playerWeaponCur is WeaponCrossbow)
             playerWeaponCur = Instantiate(Resources.Load<WeaponBase>("Prefabs/Weapons/WeaponHammer"));
 
         AttachWeaponModel();

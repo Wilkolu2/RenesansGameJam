@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     public class Wave
     {
         public List<EnemySpawner.SpawnEntry> enemiesToSpawn;
-        public int waveMultiplier = 1;
+        public int waveIncrement = 1;
     }
 
     [Header("Waves")]
@@ -50,10 +50,15 @@ public class WaveManager : MonoBehaviour
         foreach (var spawnPoint in spawnPoints)
         {
             var spawner = spawnPoint.GetComponent<EnemySpawner>();
-            var modifiedSpawns = new List<EnemySpawner.SpawnEntry>(currentWave.enemiesToSpawn);
-            foreach (var entry in modifiedSpawns)
+            var modifiedSpawns = new List<EnemySpawner.SpawnEntry>();
+            foreach (var entry in currentWave.enemiesToSpawn)
             {
-                entry.amount *= waveMultiplier;
+                var newEntry = new EnemySpawner.SpawnEntry
+                {
+                    enemyPrefab = entry.enemyPrefab,
+                    amount = entry.amount + (waveMultiplier * currentWave.waveIncrement)
+                };
+                modifiedSpawns.Add(newEntry);
             }
             spawner.ResetSpawner(modifiedSpawns);
         }
@@ -127,4 +132,6 @@ public class WaveManager : MonoBehaviour
 
         StartNextWave();
     }
+
+    public int GetCurrentWaveIndex() => currentWaveIndex;
 }

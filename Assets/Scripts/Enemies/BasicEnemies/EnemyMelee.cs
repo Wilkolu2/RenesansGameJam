@@ -4,6 +4,8 @@ public class EnemyMelee : EnemyBase
 {
     protected override void Attack()
     {
+        base.Attack();
+
         if (enemyAttackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.position) <= enemyAttackRange)
         {
 

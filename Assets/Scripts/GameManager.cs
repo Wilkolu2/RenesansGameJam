@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         if (player != null)
         {
+            player.ChangeWeaponOnDeath(); // Change the player's weapon on death
+
             if (player.HasSpareLife())
             {
                 player.LoseSpareLife();
