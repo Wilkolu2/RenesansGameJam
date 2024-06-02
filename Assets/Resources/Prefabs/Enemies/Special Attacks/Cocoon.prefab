@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cocoonMaxHp: 1
   enemiesSpawnQuantity: 5
-  timeBeforeHatch: 40
+  timeBeforeHatch: 10
   enemyPrefab: {fileID: 1885987679364773135, guid: 4cc4bcb13c2040242b227dbfdd3f32fe,
     type: 3}
 --- !u!54 &2666797992350415989
