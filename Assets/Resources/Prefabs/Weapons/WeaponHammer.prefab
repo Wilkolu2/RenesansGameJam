@@ -49,15 +49,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackPower: 5
   playerAttackSpeed: 5
-  playerAttackRange: 5
-  playerAttackCooldown: 5
+  playerAttackRange: 10
+  playerAttackCooldown: 1
   firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 6937237886642379193}
-  attackRadius: 5
+  attackRadius: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 4294967295
-  player: {fileID: 0}
 --- !u!65 &153266734347551945
 BoxCollider:
   m_ObjectHideFlags: 0
