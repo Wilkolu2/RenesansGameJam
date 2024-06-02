@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
         if (enemiesKilled >= enemiesUntilLifeRegen)
         {
             RegainLife();
-            enemiesKilled = 0; // Reset counter after life is regained
+            enemiesKilled = 0;
         }
     }
 
@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
         if (wavesCleared >= wavesUntilLifeRegen)
         {
             RegainLife();
-            wavesCleared = 0; // Reset counter after life is regenerated
+            wavesCleared = 0;
         }
     }
 
