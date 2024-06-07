@@ -826,23 +826,31 @@ MonoBehaviour:
   - enemiesToSpawn:
     - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
         type: 3}
+      amount: 0
+    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
+        type: 3}
+      amount: 0
+    waveIncrement: 1
+  - enemiesToSpawn:
+    - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
+        type: 3}
+      amount: 0
+    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
+        type: 3}
       amount: 1
+    waveIncrement: 1
+  - enemiesToSpawn:
     - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
+        type: 3}
+      amount: 1
+    - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
         type: 3}
       amount: 1
     waveIncrement: 1
   - enemiesToSpawn:
-    - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
+    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
         type: 3}
       amount: 1
-    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
-        type: 3}
-      amount: 2
-    waveIncrement: 1
-  - enemiesToSpawn:
-    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
-        type: 3}
-      amount: 2
     - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
         type: 3}
       amount: 2
@@ -853,15 +861,7 @@ MonoBehaviour:
       amount: 2
     - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
         type: 3}
-      amount: 3
-    waveIncrement: 1
-  - enemiesToSpawn:
-    - enemyPrefab: {fileID: 2945847277509514846, guid: 8e93d4872a3d5ce4db6327040c4834ad,
-        type: 3}
-      amount: 3
-    - enemyPrefab: {fileID: 1885987679364773135, guid: 4a759a38a0157f84da2b20cf90995d80,
-        type: 3}
-      amount: 3
+      amount: 2
     waveIncrement: 1
   spawnPoints:
   - {fileID: 1880024916}
