@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6415e9c7e823f4390e068cac85d9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackPower: 5
+  playerAttackPower: 2
   playerAttackSpeed: 5
   playerAttackRange: 5
-  playerAttackCooldown: 5
+  playerAttackCooldown: 3
   firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 7821072145667638785}
   projectilePrefab: {fileID: 3254464016310321094, guid: f567d95cbd7c9094ea708ac225c1d836,

@@ -183,3 +183,4 @@ public class Player : MonoBehaviour
         playerHpCur = playerHpMax;
     }
 }
+
