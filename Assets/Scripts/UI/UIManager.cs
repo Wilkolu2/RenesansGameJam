@@ -27,7 +27,9 @@ public class UIManager : MonoBehaviour
         }
 
         if (waveManager != null)
+        {
             UpdateWaveText();
+        }
     }
 
     private void UpdateHealthBar()

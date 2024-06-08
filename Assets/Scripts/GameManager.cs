@@ -37,8 +37,6 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeathPermanent()
     {
         SceneManager.LoadScene(menuSceneName);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 
     private IEnumerator WaitForSceneLoad(Player player)
