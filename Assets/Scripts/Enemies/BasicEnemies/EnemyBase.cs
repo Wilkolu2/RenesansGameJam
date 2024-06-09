@@ -1,10 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(AudioSource))]
 public abstract class EnemyBase : MonoBehaviour
 {
     [Header("Stats")]
@@ -15,6 +11,9 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected int enemyMaxHp = 1;
     [SerializeField] protected AudioClip attackSound;
     [SerializeField] protected AudioClip deathSound;
+
+    [Header("Effects")]
+    [SerializeField] private GameObject bloodEffectPrefab;
 
     protected int enemyCurHp;
     protected float enemyAttackCooldownTimer;
@@ -52,7 +51,6 @@ public abstract class EnemyBase : MonoBehaviour
         MoveTowardsPlayer();
         HandleAttackCooldown();
 
-        // If in attack range, attack
         if (Vector3.Distance(transform.position, player.position) <= enemyAttackRange && enemyAttackCooldownTimer <= 0f)
         {
             Attack();
@@ -84,9 +82,16 @@ public abstract class EnemyBase : MonoBehaviour
     public void TakeDamage(int damage)
     {
         enemyCurHp -= damage;
+        ShowBloodEffect();
 
         if (enemyCurHp <= 0 && !isDead)
             Die();
+    }
+
+    private void ShowBloodEffect()
+    {
+        if (bloodEffectPrefab != null)
+            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
     }
 
     protected virtual void Attack()
