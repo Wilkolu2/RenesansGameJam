@@ -885,7 +885,7 @@ MonoBehaviour:
   - {fileID: 1051103077}
   bossPrefab: {fileID: 6782735480181503833, guid: 90a80e374cab5b942a14e1dc98ac8685,
     type: 3}
-  bossWaveFrequency: 6
+  bossWaveFrequency: 5
 --- !u!1 &571152729
 GameObject:
   m_ObjectHideFlags: 0

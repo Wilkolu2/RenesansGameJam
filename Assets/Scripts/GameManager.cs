@@ -37,6 +37,13 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDeathPermanent()
     {
         SceneManager.LoadScene(menuSceneName);
+
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+            Destroy(player.gameObject);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private IEnumerator WaitForSceneLoad(Player player)
@@ -45,12 +52,11 @@ public class GameManager : MonoBehaviour
 
         WaveManager waveManager = FindObjectOfType<WaveManager>();
         if (waveManager != null)
-        {
             waveManager.OnPlayerDeath();
-        }
         else
             Debug.LogError("WaveManager not found after scene load!");
 
         player.ResetPlayer();
+        player.AttachWeaponModel();
     }
 }

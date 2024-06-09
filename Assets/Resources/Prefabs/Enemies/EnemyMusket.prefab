@@ -64,7 +64,7 @@ MonoBehaviour:
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
     type: 3}
   firePoint: {fileID: 5392656029166056328}
-  useArcProjectile: 1
+  useArcProjectile: 0
 --- !u!65 &7956741617817585111
 BoxCollider:
   m_ObjectHideFlags: 0

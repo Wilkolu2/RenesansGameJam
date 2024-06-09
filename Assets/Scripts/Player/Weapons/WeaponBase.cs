@@ -16,12 +16,13 @@ public abstract class WeaponBase : MonoBehaviour
 
     public abstract void Attack(Vector3 targetPosition);
 
+    /*
     protected void Start()
     {
         playerAttackPower = 10;
         playerAttackCooldownTimer = 0f;
         playerAttackCooldown = 0.2f;
-    }
+    }*/
 
     protected void Update()
     {

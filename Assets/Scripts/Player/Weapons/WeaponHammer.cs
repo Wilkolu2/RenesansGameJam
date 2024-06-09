@@ -18,15 +18,14 @@ public class WeaponHammer : WeaponBase
 
         if (player == null)
         {
-            Debug.LogError("Player reference is null during attack.");
+            Debug.LogError("Player reference null");
             return;
         }
 
-        Debug.Log("Hammer attack");
-
         playerAttackCooldownTimer = playerAttackCooldown;
 
-        // Use the player's position instead of the weapon's position
+        //player
+
         Collider[] hitColliders = Physics.OverlapSphere(player.transform.position, attackRadius, targetLayer);
 
         foreach (var hitCollider in hitColliders)

@@ -16,48 +16,25 @@ public class WeaponAxe : WeaponBase
         if (!CanAttack())
             return;
 
+        player = FindObjectOfType<Player>();
+
         if (player == null)
         {
-            Debug.LogError("Player reference is null during attack.");
+            Debug.LogError("Player reference null");
             return;
         }
 
-        Debug.Log("Axe attack");
-
         playerAttackCooldownTimer = playerAttackCooldown;
 
-        // Use the player's position instead of the weapon's position
         Collider[] hitColliders = Physics.OverlapSphere(player.transform.position, attackRadius, targetLayer);
 
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.TryGetComponent(out EnemyBase enemy))
-            {
                 enemy.TakeDamage(playerAttackPower);
-                Debug.Log("Enemy hit by axe");
-            }
+
             if (hitCollider.TryGetComponent(out Cocoon cocoon))
-            {
                 cocoon.TakeDamage(playerAttackPower);
-                Debug.Log("Cocoon hit by axe");
-            }
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (player == null)
-        {
-            player = GetComponentInParent<Player>();
-        }
-
-        if (player != null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(player.transform.position, attackRadius);
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(player.transform.position, playerAttackRange);
         }
     }
 }

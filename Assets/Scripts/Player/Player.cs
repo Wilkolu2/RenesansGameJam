@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -32,7 +31,9 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -66,11 +67,10 @@ public class Player : MonoBehaviour
         currentWeaponModel.transform.localPosition = Vector3.zero;
         currentWeaponModel.transform.localRotation = Quaternion.identity;
 
-        // Ensure the weapon is properly initialized with the player reference
         if (playerWeaponCur is WeaponHammer hammer)
-        {
             hammer.Initialize(this);
-        }
+
+        Debug.Log("Weapon model attached: " + currentWeaponModel.name);
     }
 
     public void Attack()
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         if (playerWeaponCur != null && playerWeaponCur.CanAttack())
         {
             Vector3 targetPosition = GetAttackTargetPosition();
-            playerWeaponCur.Attack(playerPos); // Pass player position
+            playerWeaponCur.Attack(playerPos);
             audioSource.PlayOneShot(attackClip);
         }
     }
@@ -181,6 +181,6 @@ public class Player : MonoBehaviour
     {
         SetPlayerCurHp(GetPlayerMaxHp());
         playerHpCur = playerHpMax;
+        AttachWeaponModel();
     }
 }
-
