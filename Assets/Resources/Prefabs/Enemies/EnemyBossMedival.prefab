@@ -170,20 +170,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAttack: 4
-  enemyMoveSpeed: 20
+  enemyMoveSpeed: 10
   enemyAttackRange: 5
-  enemyAttackCooldown: 1
+  enemyAttackCooldown: 4
   enemyMaxHp: 20
   attackSound: {fileID: 8300000, guid: 73381f0a4b5d8aa48a27c642b27ffa8d, type: 3}
   deathSound: {fileID: 8300000, guid: af85c2f59f28f434aa51ca60e5184470, type: 3}
   bloodEffectPrefab: {fileID: 0}
   devourHealAmount: 5
   specialAttackCooldownMax: 10
-  specialAttackCooldownMin: 4
-  leapAttackRange: 15
+  specialAttackCooldownMin: 10
+  leapAttackRange: 30
   leapAttackForce: 25
   devourRange: 25
-  pushForce: 250
+  pushForce: 300
 --- !u!114 &6313300195469405608
 MonoBehaviour:
   m_ObjectHideFlags: 0

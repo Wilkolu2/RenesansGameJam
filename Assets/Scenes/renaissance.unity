@@ -2508,7 +2508,12 @@ PrefabInstance:
     - target: {fileID: 8837067702077932028, guid: 458cb89ce5fee5c46b736cff4f5548c4,
         type: 3}
       propertyPath: dashCooldown
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837067702077932028, guid: 458cb89ce5fee5c46b736cff4f5548c4,
+        type: 3}
+      propertyPath: dashDuration
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
