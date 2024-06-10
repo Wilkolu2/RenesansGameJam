@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAttack: 3
   enemyMoveSpeed: 15
-  enemyAttackRange: 15
+  enemyAttackRange: 10
   enemyAttackCooldown: 1
   enemyMaxHp: 1
   attackSound: {fileID: 8300000, guid: 73381f0a4b5d8aa48a27c642b27ffa8d, type: 3}

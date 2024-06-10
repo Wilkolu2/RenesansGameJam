@@ -863,7 +863,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1880024916}
   - {fileID: 297426929}
-  bossPrefab: {fileID: 6782735480181503833, guid: 90a80e374cab5b942a14e1dc98ac8685,
+  bossPrefab: {fileID: 5713052453502083004, guid: 0b0501c7a48f53842a176924bc98eb4b,
     type: 3}
   bossWaveFrequency: 6
 --- !u!4 &820652013
