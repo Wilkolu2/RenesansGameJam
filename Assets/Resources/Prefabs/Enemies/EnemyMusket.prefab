@@ -52,13 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2916073f19b55345884ead0c046374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttack: 20
-  enemyMoveSpeed: 25
+  enemyAttack: 10
+  enemyMoveSpeed: 7
   enemyAttackRange: 15
   enemyAttackCooldown: 4
   enemyMaxHp: 1
   attackSound: {fileID: 8300000, guid: 73381f0a4b5d8aa48a27c642b27ffa8d, type: 3}
   deathSound: {fileID: 8300000, guid: af85c2f59f28f434aa51ca60e5184470, type: 3}
+  bloodEffectPrefab: {fileID: 0}
   straightProjectilePrefab: {fileID: 3254464016310321094, guid: 70978673e16af704a9b2535b6e52e409,
     type: 3}
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
@@ -175,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 2945847277509514846}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7e4b096b731fa14abaf1d5d202af6bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

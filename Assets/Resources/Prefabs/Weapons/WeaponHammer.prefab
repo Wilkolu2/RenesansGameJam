@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c934f5a0b9324442a71ae525b78decc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackPower: 2
+  playerAttackPower: 1
   playerAttackSpeed: 5
   playerAttackRange: 5
-  playerAttackCooldown: 5
+  playerAttackCooldown: 0.2
   firePoint: {fileID: 0}
   weaponModelPrefab: {fileID: 6937237886642379193}
   attackRadius: 7

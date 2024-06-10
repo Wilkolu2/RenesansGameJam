@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81e00e8c43244b49871743174671669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackPower: 2
+  playerAttackPower: 1
   playerAttackSpeed: 1
   playerAttackRange: 15
   playerAttackCooldown: 1

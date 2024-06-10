@@ -199,13 +199,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508c62f962d299245875e96c14f3d45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttack: 22
+  enemyAttack: 15
   enemyMoveSpeed: 15
   enemyAttackRange: 20
-  enemyAttackCooldown: 5
-  enemyMaxHp: 14
+  enemyAttackCooldown: 3
+  enemyMaxHp: 15
   attackSound: {fileID: 8300000, guid: 73381f0a4b5d8aa48a27c642b27ffa8d, type: 3}
   deathSound: {fileID: 8300000, guid: af85c2f59f28f434aa51ca60e5184470, type: 3}
+  bloodEffectPrefab: {fileID: 0}
   firePoint: {fileID: 5079250088400660006}
   straightProjectilePrefab: {fileID: 3254464016310321094, guid: 2a3df5f82f3cd9a459c3249f6892ab94,
     type: 3}
@@ -227,7 +228,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1499065905708882013, guid: 138b9a574723c194ebb2004b4481fdd6,
     type: 3}
   spawnPoint: {fileID: 5735343176998701100}
-  spawnInterval: 5
+  spawnInterval: 6
   spawnDelay: 3
   bossObject: {fileID: 6782735480181503833}
 --- !u!65 &6590774873653294001

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1136127552079860029}
   - component: {fileID: 7956741617817585111}
   - component: {fileID: 7949798810097186795}
-  - component: {fileID: 8916782300458415728}
   - component: {fileID: 7857756357755968308}
   - component: {fileID: 4615878891444689997}
+  - component: {fileID: 6929546800149188445}
   m_Layer: 8
   m_Name: EnemyRangedArcher
   m_TagString: Enemy
@@ -52,13 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2916073f19b55345884ead0c046374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttack: 20
-  enemyMoveSpeed: 10
+  enemyAttack: 8
+  enemyMoveSpeed: 7
   enemyAttackRange: 15
-  enemyAttackCooldown: 3
+  enemyAttackCooldown: 2
   enemyMaxHp: 1
   attackSound: {fileID: 8300000, guid: 73381f0a4b5d8aa48a27c642b27ffa8d, type: 3}
   deathSound: {fileID: 8300000, guid: af85c2f59f28f434aa51ca60e5184470, type: 3}
+  bloodEffectPrefab: {fileID: 0}
   straightProjectilePrefab: {fileID: 3254464016310321094, guid: 70978673e16af704a9b2535b6e52e409,
     type: 3}
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
@@ -113,27 +114,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!95 &8916782300458415728
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2945847277509514846}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 003de169ab04c394f8104fc46069594d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &7857756357755968308
 AudioSource:
   m_ObjectHideFlags: 0
@@ -282,6 +262,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6929546800149188445
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945847277509514846}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46642ca2f78339c419cf003d15ed3d8d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4618319599932683554
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2945847277509514846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0.274, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -52,13 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2916073f19b55345884ead0c046374a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttack: 5
-  enemyMoveSpeed: 25
+  enemyAttack: 3
+  enemyMoveSpeed: 15
   enemyAttackRange: 15
-  enemyAttackCooldown: 5
+  enemyAttackCooldown: 1
   enemyMaxHp: 1
   attackSound: {fileID: 8300000, guid: 73381f0a4b5d8aa48a27c642b27ffa8d, type: 3}
   deathSound: {fileID: 8300000, guid: af85c2f59f28f434aa51ca60e5184470, type: 3}
+  bloodEffectPrefab: {fileID: 0}
   straightProjectilePrefab: {fileID: 3254464016310321094, guid: 70978673e16af704a9b2535b6e52e409,
     type: 3}
   arcProjectilePrefab: {fileID: 3254464016310321094, guid: c5b63fbe24a2af04baa4b902855599f7,
@@ -84,8 +85,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 2.8, z: 0.34952545}
-  m_Center: {x: -0.08313179, y: 0, z: -0.035972595}
+  m_Size: {x: 3.031126, y: 2.95618, z: 0.34952545}
+  m_Center: {x: -0.01556174, y: 1.3811367, z: 0}
 --- !u!54 &7949798810097186795
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ Animator:
   m_GameObject: {fileID: 2945847277509514846}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 003de169ab04c394f8104fc46069594d, type: 2}
+  m_Controller: {fileID: 9100000, guid: dfb14baa8f73012469d68f478a97cf7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -207,7 +208,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10492
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
